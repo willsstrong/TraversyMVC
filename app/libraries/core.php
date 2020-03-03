@@ -21,8 +21,21 @@ class Core
       $this->currentController = ucwords($url[0]);
       unset($url[0]);
     }
+    require_once '../app/controllers/' . $this->currentController . '.php';
+    $this->currentController = new $this->currentController;
+    // check for second part of URL
+    if(isset($url[1])){
+      // Check if method exits
+      if(method_exists($this->currentController, $url[1])){
+        $this->currentMethod = $url[1];
+        unset($url[1]);
 
+      }
+    }
 
+    //Get Params
+    $this->params = $url ? array_values($url) : [];
+    call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
   }
 
   public function getUrl() {
