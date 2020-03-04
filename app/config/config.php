@@ -4,7 +4,7 @@
 define('APPROOT', dirname(dirname(__FILE__)));
 
 //URLROOT:  URL of Root
-define('URLROOT', 'https://traversymvn.lan');
+define('URLROOT', '/public');
 
 //SITENAME:
 define('SITENAME', 'TraversyMVC');
