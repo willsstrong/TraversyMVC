@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteBase /public
+
+  # Pass all requests not referring directly to files in the filesystem to
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule  ^(.+)$ index.php?url=$1 [QSA,L]
+
+</IfModule>
